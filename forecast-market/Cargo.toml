@@ -1,0 +1,29 @@
+[package]
+name = "forecast-market"
+version = "0.1.0"
+description = "Created with Anchor"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "forecast_market"
+
+[features]
+default = ["testnet"]
+mainnet = ["wormhole-anchor-sdk/mainnet"]
+testnet = ["wormhole-anchor-sdk/solana-devnet"]
+devnet = ["wormhole-anchor-sdk/tilt-devnet"]
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build", "wormhole-anchor-sdk/idl-build"]
+
+[dependencies]
+anchor-spl = { workspace = true }
+solana-program = "1.18.25"
+anchor-lang = { workspace = true }
+wormhole-anchor-sdk = { path = "../../modules/wormhole-anchor-sdk", default-features = false }
+wormhole-io = { workspace = true }
+serde = "1.0.213"
+serde_json = "1.0.132"
